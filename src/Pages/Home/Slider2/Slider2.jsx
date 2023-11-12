@@ -14,7 +14,7 @@ import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 
 const Slider2 = () => {
   return (
-    <div className="my-14">
+    <div className="my-14 p-4 md:p-0 container mx-auto">
       <SectionHeader
         subheading={"From 11:00am to 10:00pm"}
         heading={"ORDER ONLINE"}
@@ -27,7 +27,7 @@ const Slider2 = () => {
           clickable: true,
         }}
         modules={[FreeMode, Pagination]}
-        className="mySwiper mx-16"
+        className="mySwiper "
       >
         <SwiperSlide>
           <img src={img1} alt="" />

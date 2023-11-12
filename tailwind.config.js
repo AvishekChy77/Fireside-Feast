@@ -9,6 +9,10 @@ export default {
       colors: {
         txt: "rgba(21, 21, 21, 0.50)",
       },
+      backgroundImage: {
+        'hero-pattern': "url('/img/hero-pattern.svg')",
+        'foo': "url('./src/assets/home/featured.jpg')",
+      }
     },
   },
   plugins: [require("daisyui")],

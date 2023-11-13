@@ -3,10 +3,8 @@ import Cover from "../../Components/Cover/Cover";
 import SectionHeader from "../../Components/SectionHeader/SectionHeader";
 import { useCategory } from "../../Hooks/useCategory";
 import bg from "../../assets/menu/banner3.jpg";
-import {
-  default as des,
-  default as pizzaimg,
-} from "../../assets/menu/dessert-bg.jpeg";
+import des from "../../assets/menu/dessert-bg.jpeg";
+import pizzaimg from "../../assets/menu/pizza-bg.jpg";
 import saladimg from "../../assets/menu/salad-bg.jpg";
 import soupimg from "../../assets/menu/soup-bg.jpg";
 import MenuCategory from "./MenuCategory";
@@ -37,7 +35,7 @@ const Menu = () => {
       <MenuCategory
         items={dessert}
         image={des}
-        txt={"DESSERTS"}
+        txt={"dessert"}
         subtxt={
           "Elevate your dining experience with the perfect ending—our irresistible desserts are a treat for your taste buds."
         }
@@ -45,7 +43,7 @@ const Menu = () => {
       <MenuCategory
         items={pizza}
         image={pizzaimg}
-        txt={"PIZZA"}
+        txt={"pizza"}
         subtxt={
           " Our pizzas are a harmony of fresh, high-quality ingredients and expertly blended flavors."
         }
@@ -53,7 +51,7 @@ const Menu = () => {
       <MenuCategory
         items={salad}
         image={saladimg}
-        txt={"SALAD"}
+        txt={"salad"}
         subtxt={
           "our salads are a delightful way to savor health without compromising on taste."
         }
@@ -61,7 +59,7 @@ const Menu = () => {
       <MenuCategory
         items={soup}
         image={soupimg}
-        txt={"SOUP"}
+        txt={"soup"}
         subtxt={"Warm your senses with our comforting soup selections."}
       ></MenuCategory>
     </div>

@@ -29,7 +29,15 @@ const Navbar = () => {
           className={` ${scroll ? " text-black" : " text-white"} `}
           to="/menu"
         >
-          Menu
+          OUR MENU
+        </Link>
+      </li>
+      <li>
+        <Link
+          className={` ${scroll ? " text-black" : " text-white"} `}
+          to="/order/salad"
+        >
+          OUR SHOP
         </Link>
       </li>
     </>

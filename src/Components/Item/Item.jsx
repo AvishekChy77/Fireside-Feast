@@ -10,8 +10,8 @@ const Item = ({ item }) => {
         alt=""
       />
       <div>
-        <h3 className=" uppercase text-lg">{name}------------</h3>
-        <p>{recipe}</p>
+        <h3 className=" uppercase md:text-lg">{name}------------</h3>
+        <p className=" text-sm md:text-base">{recipe}</p>
       </div>
       <p className="text-[#BB8506]">${price}</p>
     </div>

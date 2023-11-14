@@ -40,6 +40,14 @@ const Navbar = () => {
           OUR SHOP
         </Link>
       </li>
+      <li>
+        <Link
+          className={` ${scroll ? " text-black" : " text-white"} `}
+          to="/login"
+        >
+          LogIn
+        </Link>
+      </li>
     </>
   );
   return (

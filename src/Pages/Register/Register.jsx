@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../Provider/AuthProvider";
 import img from "../../assets/others/authentication2.png";
 
@@ -129,10 +130,12 @@ const Register = () => {
                 )}
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn btn-outline hover:bg-black">
+                  Register
+                </button>
               </div>
             </form>
-            <ToastContainer />
+
             <p className="flex justify-between">
               <small>Already a member?</small> <Link to="/login">LogIn</Link>
             </p>

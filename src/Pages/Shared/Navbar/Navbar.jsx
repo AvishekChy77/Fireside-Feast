@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { IoMdCart } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
+import useCart from "../../../Hooks/useCart";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Navbar = () => {
   const [scroll, setScroll] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const { cart } = useCart();
   console.log(user);
+
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 200;
@@ -29,7 +32,10 @@ const Navbar = () => {
   const navItem = (
     <>
       <li>
-        <Link className={` ${scroll ? " text-black" : " text-white"} `} to="/">
+        <Link
+          className={` ${scroll ? " text-black" : " text-white"} `}
+          to="/home"
+        >
           HOME
         </Link>
       </li>
@@ -51,31 +57,19 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link className={` ${scroll ? " text-black" : " text-white"} `} to="/">
+        <Link
+          className={` ${scroll ? " text-black" : " text-white"} `}
+          to="/dashboard/cart"
+        >
           <button className="flex items-center">
             <IoMdCart />
-            <div className="ml-1 badge badge-secondary">+0</div>
+            <div className="ml-1 badge badge-secondary">+{cart.length}</div>
           </button>
         </Link>
       </li>
     </>
   );
 
-  // {
-  //   user ? (
-  //     <>
-  //       <button onClick={handleLogout} className="btn btn-outline">
-  //         LogOut
-  //       </button>
-  //     </>
-  //   ) : (
-  //     <>
-  //       <li>
-  //         <Link to="/login">LogIn</Link>{" "}
-  //       </li>
-  //     </>
-  //   );
-  // }
   return (
     <div
       className={`${
@@ -136,7 +130,7 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <button className="btn btn-sm btn-ghost">
+                <button className="btn btn-sm btn-ghost text-black">
                   {user.displayName}
                 </button>
               </li>

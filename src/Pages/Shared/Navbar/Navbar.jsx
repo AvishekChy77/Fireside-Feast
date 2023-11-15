@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { IoMdCart } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Navbar = () => {
   const [scroll, setScroll] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 200;
@@ -16,11 +20,17 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((e) => console.log(e));
+  };
   const navItem = (
     <>
       <li>
         <Link className={` ${scroll ? " text-black" : " text-white"} `} to="/">
-          Home
+          HOME
         </Link>
       </li>
 
@@ -41,20 +51,36 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link
-          className={` ${scroll ? " text-black" : " text-white"} `}
-          to="/login"
-        >
-          LogIn
+        <Link className={` ${scroll ? " text-black" : " text-white"} `} to="/">
+          <button className="flex items-center">
+            <IoMdCart />
+            <div className="ml-1 badge badge-secondary">+0</div>
+          </button>
         </Link>
       </li>
     </>
   );
+
+  // {
+  //   user ? (
+  //     <>
+  //       <button onClick={handleLogout} className="btn btn-outline">
+  //         LogOut
+  //       </button>
+  //     </>
+  //   ) : (
+  //     <>
+  //       <li>
+  //         <Link to="/login">LogIn</Link>{" "}
+  //       </li>
+  //     </>
+  //   );
+  // }
   return (
     <div
       className={`${
-        scroll ? "bg-white text-black" : " bg-txt"
-      } navbar text-white z-20 transition-all duration-500 fixed max-w-screen-2xl mx-auto `}
+        scroll ? "bg-white" : " bg-txt"
+      } navbar z-20 transition-all duration-500 fixed max-w-screen-2xl mx-auto `}
     >
       <div className="navbar-start">
         <div className="dropdown">
@@ -98,7 +124,34 @@ const Navbar = () => {
         <ul className="menu z-30 menu-horizontal px-1">{navItem}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn btn-sm btn-outline">LogIn</a>
+        {user?.email ? (
+          <div className="dropdown dropdown-end text-rose-400">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src={user.photoURL} alt="" />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <button className="btn btn-sm btn-ghost">
+                  {user.displayName}
+                </button>
+              </li>
+              <li>
+                <button onClick={handleLogout} className="btn btn-sm btn-ghost">
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <NavLink to="/login">
+            <button className="btn btn-sm btn-ghost">LogIn</button>
+          </NavLink>
+        )}
       </div>
     </div>
   );

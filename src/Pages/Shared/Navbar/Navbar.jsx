@@ -32,10 +32,7 @@ const Navbar = () => {
   const navItem = (
     <>
       <li>
-        <Link
-          className={` ${scroll ? " text-black" : " text-white"} `}
-          to="/home"
-        >
+        <Link className={` ${scroll ? " text-black" : " text-white"} `} to="/">
           HOME
         </Link>
       </li>

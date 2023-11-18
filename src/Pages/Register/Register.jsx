@@ -5,19 +5,22 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { AuthContext } from "../../Provider/AuthProvider";
 import img from "../../assets/others/authentication2.png";
+import SocialLogin from "../Login/SocialLogin";
 
 const Register = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
   const { createUser, auth } = useContext(AuthContext);
   const location = useLocation();
   const goTo = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -32,22 +35,29 @@ const Register = () => {
         })
           .then((res) => {
             // Profile information updated successfully
+            // add to db
+            const userInfo = {
+              name: data.displayName,
+              email: data.email,
+            };
+            axiosPublic.post("/users", userInfo).then((res) => {
+              if (res.data.insertedId) {
+                toast("Account created succesfully!");
+                reset();
+                goTo(location.state ? location.state : "/");
+              }
+            });
             console.log(res);
           })
           .catch((error) => {
             // Handle profile update errors
             console.log(error.message);
           });
-
-        toast("Account created succesfully!");
-        goTo(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
-
-  console.log(watch("example"));
 
   return (
     <>
@@ -139,6 +149,7 @@ const Register = () => {
             <p className="flex justify-between">
               <small>Already a member?</small> <Link to="/login">LogIn</Link>
             </p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

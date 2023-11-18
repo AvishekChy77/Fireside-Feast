@@ -10,11 +10,12 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 // import required modules
 import { FreeMode, Pagination } from "swiper/modules";
+import Container from "../../../Components/Container/Container";
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 
 const Slider2 = () => {
   return (
-    <div className="my-14 p-4 md:p-0 container mx-auto">
+    <Container>
       <SectionHeader
         subheading={"From 11:00am to 10:00pm"}
         heading={"ORDER ONLINE"}
@@ -46,7 +47,7 @@ const Slider2 = () => {
           <p></p>
         </SwiperSlide>
       </Swiper>
-    </div>
+    </Container>
   );
 };
 

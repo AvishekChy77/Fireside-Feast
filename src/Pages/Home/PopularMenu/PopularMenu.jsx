@@ -1,3 +1,4 @@
+import Container from "../../../Components/Container/Container";
 import Item from "../../../Components/Item/Item";
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import { useCategory } from "../../../Hooks/useCategory";
@@ -14,7 +15,7 @@ const PopularMenu = () => {
   // }, []);
   const popularitem = menu.filter((item) => item.category === "popular");
   return (
-    <div className="my-12 mx-auto p-4 md:p-0 container">
+    <Container>
       <SectionHeader
         subheading={"Check it out"}
         heading={"FROM OUR MENU"}
@@ -24,7 +25,7 @@ const PopularMenu = () => {
           <Item key={item._id} item={item}></Item>
         ))}
       </div>
-    </div>
+    </Container>
   );
 };
 

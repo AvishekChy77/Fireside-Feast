@@ -9,6 +9,7 @@ import {
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
 import img from "../../assets/others/authentication2.png";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -126,6 +127,7 @@ const Login = () => {
                 Register
               </Link>
             </p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
